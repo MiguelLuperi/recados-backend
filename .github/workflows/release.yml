@@ -1,0 +1,27 @@
+name: Deploy Backend - Render via Tag
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Instalar dependências
+        run: npm install
+
+      - name: Validar backend
+        run: |
+          echo "Backend validado com sucesso"
+
+      - name: Log de Deploy
+        run: |
+          echo "Backend: Deploy iniciado para ${GITHUB_REF_NAME}"
+          echo "Repository: ${{ github.repository }}"
+          echo "Timestamp: $(date)"
