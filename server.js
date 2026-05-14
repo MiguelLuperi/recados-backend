@@ -107,7 +107,8 @@ app.get("/", (req, res) => {
   res.json({
     status: "Backend do Sistema de Recados rodando",
     versao: "1.0.0",
-    cors_ativo: true
+    cors_ativo: true,
+    total_recados: recados.length
   });
 });
 
