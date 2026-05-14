@@ -71,7 +71,8 @@ app.post("/recados", (req, res) => {
       : 1,
     mensagem,
     autor,
-    data: new Date().toISOString().split("T")[0]
+    data: new Date().toLocaleDateString("pt-BR"),
+    hora: new Date().toLocaleTimeString("pt-BR")
   };
 
   recados.push(novoRecado);
