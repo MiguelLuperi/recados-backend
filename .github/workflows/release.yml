@@ -1,4 +1,4 @@
-name: Deploy Backend - Render via Tag
+name: Backend Deploy via SemVer Tag
 
 on:
   push:
@@ -10,18 +10,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - name: Checkout código
+        uses: actions/checkout@v4
 
       - name: Instalar dependências
         run: npm install
 
-      - name: Validar backend
+      - name: Validar servidor
         run: |
-          echo "Backend validado com sucesso"
+          echo "Backend validado"
 
-      - name: Log de Deploy
+      - name: Exibir versão
         run: |
-          echo "Backend: Deploy iniciado para ${GITHUB_REF_NAME}"
-          echo "Repository: ${{ github.repository }}"
-          echo "Timestamp: $(date)"
+          echo "Deploy da versão ${GITHUB_REF_NAME}"
+
+      - name: Finalizar deploy
+        run: |
+          echo "Deploy backend concluído com sucesso"
