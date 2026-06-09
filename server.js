@@ -10,7 +10,10 @@ app.use(express.json());
 
 // CORS configurado para aceitar frontend da Vercel
 const corsOptions = {
-  origin: process.env.CORS_ORIGIN || "*",
+  origin: [
+    "https://recados-frontend.vercel.app",
+    // "https://SEU-CODESPACE-5000.app.github.dev"  <- descomente quando for testar no Codespaces
+  ],
   methods: "GET,POST,DELETE",
   allowedHeaders: "Content-Type,Authorization"
 };
@@ -109,6 +112,15 @@ app.get("/", (req, res) => {
     versao: "1.0.0",
     cors_ativo: true,
     total_recados: recados.length
+  });
+});
+
+// Rota v1
+app.get("/v1", (req, res) => {
+  const agora = new Date().toLocaleString("pt-BR");
+  res.json({
+    message: "Api v1 respondendo no container docker...",
+    chamada_em: agora
   });
 });
 
