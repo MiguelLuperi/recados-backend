@@ -12,6 +12,7 @@ app.use(express.json());
 const corsOptions = {
   origin: [
     "https://recados-frontend.vercel.app",
+     "http://localhost:8080",
     // "https://SEU-CODESPACE-5000.app.github.dev"  <- descomente quando for testar no Codespaces
   ],
   methods: "GET,POST,DELETE",
